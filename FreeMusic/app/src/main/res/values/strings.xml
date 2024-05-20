@@ -1,0 +1,25 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">FreeMusic</string>
+
+    <string name="songs">歌曲</string>
+    <string name="artists">艺术家</string>
+    <string name="albums">专辑</string>
+
+    <string name="no_songs_found">未发现歌曲</string>
+    <string name="no_artists_found">未发现艺术家</string>
+    <string name="no_albums_found">未发现专辑</string>
+
+    <string name="combine_two_strings">%1$s | %2$s</string>
+
+    <string name="count_song"><xliff:g id="count">%d</xliff:g> 首歌曲</string>
+    <string name="count_songs"><xliff:g id="count">%d</xliff:g> 首歌曲</string>
+    <string name="count_album"><xliff:g id="count">%d</xliff:g> 张专辑</string>
+    <string name="count_albums"><xliff:g id="count">%d</xliff:g> 张专辑</string>
+    <string name="count_artist"><xliff:g id="count">%d</xliff:g> 位艺术家</string>
+    <string name="count_artists"><xliff:g id="count">%d</xliff:g> 位艺术家</string>
+
+    <string name="number_song_add_queue">已将 <xliff:g example="1" id="number">%d</xliff:g> 首歌曲添加到队列</string>
+    <string name="number_songs_add_queue">已将 <xliff:g example="1" id="number">%d</xliff:g> 首歌曲添加到队列</string>
+    <string name="number_song_add_playlist">已将 <xliff:g example="1" id="number">%d</xliff:g> 首歌曲添加到播放列表</string>
+    <string name="number_songs_add_playlist">已将 <xliff:g example="1" id="number">%d</xliff:g> 首歌曲添加到播放列表</string>
+</resources>
