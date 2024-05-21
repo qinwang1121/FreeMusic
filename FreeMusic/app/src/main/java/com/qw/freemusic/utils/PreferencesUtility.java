@@ -18,6 +18,8 @@ public class PreferencesUtility {
     private static final String SHOW_LOCKSCREEN_ALBUMART = "show_albumart_lockscreen";
     private static final String TOGGLE_XPOSED_TRACKSELECTOR = "toggle_xposed_trackselector";
 
+    private static final String IS_LOGIN = "login";
+
     private static PreferencesUtility sInstance;
     private Context mContext = MainApplication.sContext;
 
@@ -67,6 +69,14 @@ public class PreferencesUtility {
     }
 
     public boolean getXPosedTrackselectorEnabled() {
-        return mPreferences.getBoolean(TOGGLE_XPOSED_TRACKSELECTOR, false);
+        return mPreferences.getBoolean(IS_LOGIN, false);
+    }
+
+    public boolean isLogin() {
+        return mPreferences.getBoolean(IS_LOGIN, false);
+    }
+
+    public void setLogin(boolean state) {
+        mPreferences.edit().putBoolean(IS_LOGIN, state).commit();
     }
 }
