@@ -1,5 +1,6 @@
 package com.qw.freemusic.view.fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -25,6 +26,7 @@ import com.qw.freemusic.main.MusicStateListener;
 import com.qw.freemusic.utils.ImageUtils;
 import com.qw.freemusic.utils.ResourceUtil;
 import com.qw.freemusic.utils.TimberUtils;
+import com.qw.freemusic.view.activity.NowPlayingActivity;
 import com.qw.freemusic.view.widget.PlayPauseButton;
 
 import net.steamcrafted.materialiconlib.MaterialIconView;
@@ -138,6 +140,13 @@ public class QuickControlsFragment extends BaseFragment implements MusicStateLis
     public void onResume() {
         super.onResume();
         topContainer = rootView.findViewById(R.id.topContainer);
+        topContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View pView) {
+                Intent intent = new Intent(requireActivity(), NowPlayingActivity.class);
+                requireActivity().startActivity(intent);
+            }
+        });
         fragmentPaused = false;
         if (mProgress != null)
             mProgress.postDelayed(mUpdateProgress, 10);

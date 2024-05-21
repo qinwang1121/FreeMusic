@@ -14,4 +14,7 @@
     <color name="item_song_visualizer_color">#FFBB86FC</color>
 
     <color name="quick_play_stop_color">#FFBB86FC</color>
+
+    <color name="music_model_color">#FFBB86FC</color>
+    <color name="music_model_color_no">#FF000000</color>
 </resources>
