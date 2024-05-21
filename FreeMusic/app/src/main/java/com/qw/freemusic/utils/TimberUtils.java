@@ -2,9 +2,11 @@ package com.qw.freemusic.utils;
 
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 
 import com.qw.freemusic.R;
 
@@ -64,5 +66,18 @@ public class TimberUtils {
         if (darkness >= 0.5) {
             return Color.WHITE;
         } else return Color.BLACK;
+    }
+
+    public static void shareTrack(final Context context, long id) {
+
+        try {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            share.setType("audio/");
+            share.putExtra(Intent.EXTRA_STREAM, Uri.withAppendedPath(Uri.parse("content://media/external/audio/media"), "" + id));
+            context.startActivity(Intent.createChooser(share, "Share"));
+        } catch (Exception e) {
+            Log.i("qynwhy", "shareTrack error:" + e);
+        }
     }
 }

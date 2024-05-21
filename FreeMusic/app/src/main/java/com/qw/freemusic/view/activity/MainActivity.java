@@ -26,6 +26,9 @@ import com.qw.freemusic.view.widget.SlidingUpPanelLayout;
 
 
 public class MainActivity extends BaseActivity {
+
+    public static MainActivity sMainActivity;
+
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName pComponentName, IBinder pIBinder) {
@@ -52,6 +55,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        sMainActivity = this;
         if (verPermissions()) {
             setView();
         }

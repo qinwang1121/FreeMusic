@@ -2,11 +2,13 @@ package com.qw.freemusic.adapter;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.qw.freemusic.MainApplication;
 import com.qw.freemusic.R;
+import com.qw.freemusic.entity.IdType;
 import com.qw.freemusic.entity.Song;
 import com.qw.freemusic.foundation.BaseSongAdapter;
 import com.qw.freemusic.main.MusicPlayer;
 import com.qw.freemusic.utils.ResourceUtil;
+import com.qw.freemusic.utils.TimberUtils;
+import com.qw.freemusic.view.activity.MainActivity;
 import com.qw.freemusic.view.widget.MusicVisualizer;
 
 import java.util.List;
@@ -69,7 +74,7 @@ public class SongsListAdapter extends BaseSongAdapter<SongsListAdapter.ItemHolde
             itemHolder.title.setTextColor(ResourceUtil.getColor(R.color.item_song_title_color));
         }
 
-//        setOnPopupMenuListener(itemHolder, position);
+        setOnPopupMenuListener(itemHolder, position);
     }
 
     @Override
@@ -95,6 +100,34 @@ public class SongsListAdapter extends BaseSongAdapter<SongsListAdapter.ItemHolde
             ret[i] = arraylist.get(i).id;
         }
         return ret;
+    }
+
+    private void setOnPopupMenuListener(ItemHolder itemHolder, final int position) {
+
+        itemHolder.popupMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final PopupMenu menu = new PopupMenu(MainApplication.sContext, v);
+
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.popup_song_play:
+                                MusicPlayer.playAll(MainApplication.sContext, songIDs, position, -1, IdType.NA, false);
+                                break;
+                            case R.id.popup_song_share:
+                                TimberUtils.shareTrack(MainActivity.sMainActivity, arraylist.get(position).id);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                menu.inflate(R.menu.popup_song);
+                menu.show();
+            }
+        });
     }
 
     class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
